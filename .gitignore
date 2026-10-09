@@ -1,0 +1,22 @@
+# PlatformIO Build Files
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/
+
+# Python Virtual Environment & Bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.env
+
+# Snapshots & Dynamic Output
+server/static/snapshots/*.jpg
+server/static/snapshots/*.png
+
+# OS Specific
+.DS_Store
+Thumbs.db
