@@ -2,11 +2,6 @@
 #include "BluetoothSerial.h"
 #include "config.h"
 
-// Ensure Bluetooth is enabled in ESP32 config
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Bluetooth is not enabled! Please enable Bluetooth in board configuration.
-#endif
-
 // Bluetooth Serial Instance
 BluetoothSerial SerialBT;
 
