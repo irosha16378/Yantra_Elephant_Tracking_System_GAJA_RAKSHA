@@ -1,5 +1,5 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef GAJA_RAKSHA_CONFIG_H
+#define GAJA_RAKSHA_CONFIG_H
 
 // ==========================================
 // GajaRaksha Hardware Pin & Setup Configuration
@@ -21,4 +21,4 @@
 // Serial Baud Rate
 #define SERIAL_BAUD      115200
 
-#endif // CONFIG_H
+#endif // GAJA_RAKSHA_CONFIG_H
