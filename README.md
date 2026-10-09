@@ -11,11 +11,9 @@ GajaRaksha_Test/
 ├── firmware/                     # ⚡ ESP32 PlatformIO Microcontroller Code
 │   ├── platformio.ini           # PlatformIO configuration (ESP32 Board, Framework & Serial Baud)
 │   ├── include/                 # Hardware Header Files
-│   │   ├── config.h             # GPIO Pin map (Buzzer, LEDs, Motor Driver pins)
-│   │   └── bluetooth_handler.h  # Bluetooth Serial communication header
+│   │   └── config.h             # GPIO Pin map (Buzzer, LEDs, Motor Driver pins)
 │   ├── src/                     # C++ Source Files
-│   │   ├── main.cpp             # Main ESP32 setup & loop routines
-│   │   └── bluetooth_handler.cpp# Bluetooth command parser ('S' = Stop/Alarm, 'F' = Clear)
+│   │   └── main.cpp             # Main ESP32 entry point with BluetoothSerial ('S' = Stop/Alarm, 'F' = Clear)
 │   ├── lib/                     # Custom hardware driver libraries
 │   │   └── README
 │   └── test/                    # Unit test suites
@@ -47,7 +45,7 @@ GajaRaksha_Test/
 - ESP32 Development Board (e.g., ESP32-WROOM-32).
 
 ### 2. Building & Flashing
-1. Open VS Code and open the `firmware/` directory or the root directory.
+1. Open VS Code and open the `firmware/` directory or root directory.
 2. Connect your ESP32 board via USB.
 3. Click the **PlatformIO Upload** button (→ arrow in status bar) or run:
    ```bash

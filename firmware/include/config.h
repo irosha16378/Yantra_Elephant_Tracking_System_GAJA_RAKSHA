@@ -2,24 +2,23 @@
 #define CONFIG_H
 
 // ==========================================
-// GajaRaksha Hardware & Pin Configuration
+// GajaRaksha Hardware Pin & Setup Configuration
 // ==========================================
 
-// Bluetooth Configuration
+// Bluetooth Device Name
 #define BT_DEVICE_NAME "GajaYanthra_BT"
 
-// Pin Definitions for Actuators & Indicators
-#define BUZZER_PIN       18   // Piezo Buzzer / Alarm output
-#define ALERT_LED_PIN    19   // Red High-Intensity Alert LED
-#define STATUS_LED_PIN   2    // Onboard Status LED (GPIO 2)
+// Actuators & Indicators GPIO Pins
+#define BUZZER_PIN       18   // Piezo Buzzer / Siren
+#define ALERT_LED_PIN    19   // High-intensity Alert LED
+#define STATUS_LED_PIN   2    // Onboard Status LED
 
-// Motor / Robot Control Pins (L298N / TB6612FNG driver or Relays)
-#define MOTOR_ENABLE_PIN 13   // Enable pin or Relay control
+// Motor Driver Pins (e.g. L298N / Relays)
+#define MOTOR_ENABLE_PIN 13   // Enable pin / Relay
 #define MOTOR_IN1_PIN    12   // Motor Direction 1
 #define MOTOR_IN2_PIN    14   // Motor Direction 2
 
-// Timing & Safety Configuration
-#define BT_BAUD_RATE     115200
-#define ALERT_TIMEOUT_MS 3000 // Time to maintain alert state if signal drops
+// Serial Baud Rate
+#define SERIAL_BAUD      115200
 
 #endif // CONFIG_H
