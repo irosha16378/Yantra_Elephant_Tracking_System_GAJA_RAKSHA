@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GajaRaksha | AI Control Center</title>
+    <style>
+        :root {
+            --primary: #00d2ff; /* Modern Blue */
+            --danger: #ff4b2b; /* Alert Red */
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            margin: 0;
+            padding: 30px;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .status-dot {
+            height: 12px;
+            width: 12px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        /* Table Styles */
+        .table-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: var(--primary);
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: middle;
+        }
+
+        /* Animation for New Rows */
+        tr.new-row {
+            animation: slideIn 0.8s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); background: rgba(0, 210, 255, 0.1); }
+            to { opacity: 1; transform: translateX(0); background: transparent; }
+        }
+
+        .snapshot-img {
+            width: 120px;
+            height: 70px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #334155;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .snapshot-img:hover {
+            transform: scale(2.5);
+            z-index: 100;
+            position: relative;
+            border-color: var(--primary);
+        }
+
+        .badge {
+            background: var(--danger);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <h1 style="margin:0;">GajaRaksha <span style="font-weight:200;">COMMAND CENTER</span></h1>
+            <p style="margin:5px 0 0; opacity:0.6; font-size:14px;">Real-time Elephant Monitoring & Logging</p>
+        </div>
+        <div>
+            <span class="status-dot"></span> <span style="font-size:14px; font-weight:bold;">LIVE FEED ACTIVE</span>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Snapshot</th>
+                    <th>Detection Time</th>
+                    <th>Status</th>
+                    <th>Zone</th>
+                    <th>Action Taken</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                {% for log in logs %}
+                <tr class="new-row">
+                    <td><img src="{{ url_for('static', filename=log.img) }}" class="snapshot-img"></td>
+                    <td><b style="color:var(--primary);">{{ log.time }}</b></td>
+                    <td><span class="badge">ELEPHANT DETECTED</span></td>
+                    <td>North Corridor</td>
+                    <td style="color:#22c55e;">Robot Stopped / Buzzer Active</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //refresh th page 
+        setTimeout(function(){
+            location.reload();
+        }, 5000);
+
+      
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseover', () => {
+                row.style.background = 'rgba(255,255,255,0.02)';
+            });
+            row.addEventListener('mouseout', () => {
+                row.style.background = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>
